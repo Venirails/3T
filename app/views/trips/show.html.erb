@@ -30,7 +30,13 @@
         <div class="ui floated basic segment">
             <h3>Location:</h3>
             <a href="https://www.google.com/maps/place/<%=@trip.location.city%>,+<%=@trip.location.state%>" target="blank">
-            <img src="https://maps.googleapis.com/maps/api/staticmap?markers=<%=@trip.location.latitude%>,<%=@trip.location.longitude%>&zoom=12&size=300x300&">
+
+
+            
+            <%#= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@trip.location.latitude},#{@trip.location.longitude}&zoom=7&size=640x400&key=AIzaSyD0CXUVs7DQa79XsU6aUHKc3-jD6Etz3dU",
+              class: 'img-fluid img-rounded', alt: "#{@trip.name} on the map"%>
+         
+            <img src="/assets/map.png" height="200" width="200">
         </a>
         </div>
     </div>
@@ -69,6 +75,8 @@
                                 <% end %>
                                     <% if @trip.posts.any? %>
                                         <% @trip.posts.reverse.each do |post| %>
+
+
                                             <div class="ui vertical segment">
                                                 <img class="ui avatar image" src="<%=post.user.photo %>" alt="<%=post.user.name%>">
                                                 <span class="ui header">

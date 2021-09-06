@@ -12,16 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2019_08_22_165444) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "friendships", id: :serial, force: :cascade do |t|
+  create_table "friendships", force: :cascade do |t|
     t.string "friendable_type"
     t.integer "friendable_id"
     t.integer "friend_id"
@@ -35,8 +32,8 @@ ActiveRecord::Schema.define(version: 2019_08_22_165444) do
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "link"
-    t.bigint "trip_id"
-    t.bigint "user_id"
+    t.integer "trip_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["trip_id"], name: "index_items_on_trip_id"
@@ -55,8 +52,8 @@ ActiveRecord::Schema.define(version: 2019_08_22_165444) do
   create_table "posts", force: :cascade do |t|
     t.string "name"
     t.string "body"
-    t.bigint "trip_id"
-    t.bigint "user_id"
+    t.integer "trip_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["trip_id"], name: "index_posts_on_trip_id"
@@ -74,8 +71,8 @@ ActiveRecord::Schema.define(version: 2019_08_22_165444) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "location_id"
-    t.bigint "category_id"
+    t.integer "location_id"
+    t.integer "category_id"
     t.datetime "date"
     t.integer "author_id"
     t.index ["category_id"], name: "index_trips_on_category_id"
@@ -83,8 +80,8 @@ ActiveRecord::Schema.define(version: 2019_08_22_165444) do
   end
 
   create_table "trips_users", id: false, force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "trip_id", null: false
+    t.integer "user_id", null: false
+    t.integer "trip_id", null: false
     t.index ["trip_id", "user_id"], name: "index_trips_users_on_trip_id_and_user_id"
     t.index ["user_id", "trip_id"], name: "index_trips_users_on_user_id_and_trip_id"
   end
@@ -93,15 +90,9 @@ ActiveRecord::Schema.define(version: 2019_08_22_165444) do
     t.string "email"
     t.string "name"
     t.string "password_digest"
-    t.string "photo", default: "https://www.sccpre.cat/mypng/detail/105-1056428_buncee-evergreen-christmas-tree.png"
+    t.string "photo", default: "/assets/no.png"
     t.string "twitter"
     t.string "instagram"
   end
 
-  add_foreign_key "items", "trips"
-  add_foreign_key "items", "users"
-  add_foreign_key "posts", "trips"
-  add_foreign_key "posts", "users"
-  add_foreign_key "trips", "categories"
-  add_foreign_key "trips", "locations"
 end
