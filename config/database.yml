@@ -79,7 +79,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: Trip-up_production
-  username: Trip-up
-  password: <%= ENV['TRIP-UP_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  database: 3t_production
+  pool: 5
