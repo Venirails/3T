@@ -13,11 +13,13 @@
 
 <body>
     <nav class="ui secondary pointing menu">
-        <div class="ui basic segment">
-            <a href="/"> <img src=/assets/Trinity.png height="100" width="100"></a>
-        </div>
-
+        <style>
+            .ui.secondary.pointing.menu {
+  background-color: #08c1ff;
+}
+        </style>
         <% if logged_in? %>
+        <a href="/"> <img src=/assets/Trinity_home.png height="75" width="75"></a>
             <a class="item" href="/">My Trips</a>
             <% if current_user.friend_requests? %>
                 <a class="item" href="<%= friends_path %>">
@@ -43,5 +45,6 @@
     </nav>
     <%= yield %>
 </body>
-
+<footer>
+    <img  src="/assets/bg.png" width="1000">
 </html>
