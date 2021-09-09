@@ -20,32 +20,31 @@
         </style>
         <% if logged_in? %>
         <a href="/"> <img src=/assets/Trinity_home.png height="75" width="75"></a>
-            <a class="item" href="/">My Trips</a>
+            <a class="<%= active_class('/home') %>" href="/">My Trips</a>
             <% if current_user.friend_requests? %>
-                <a class="item" href="<%= friends_path %>">
+                <a class="<%= active_class('/friends') %>" href="<%= friends_path %>">
               Friends
               <div class="floating ui red circular label"><%=current_user.requested_friends.count%></div></a>
                 <% else %>
-                    <a class="item" href="<%= friends_path %>">Friends</a>
+                    <a class="<%= active_class('/friends') %>" href="<%= friends_path %>">Friends</a>
                     <% end %>
-                        <a class="item" href="<%= user_path(current_user)%>">Profile</a>
-                        <a class="item" href="/trips/browse">Browse</a>
+                        <a class='<%= active_class("#{user_path(current_user)}") %>' href="<%= user_path(current_user)%>">Profile</a>
+                        <a class="<%= active_class('/trips/browse') %>" href="/trips/browse">Browse</a>
                         <% end %>
 
 
-                            <div class="right menu">
+                            
                                 <div class="item">
                                     <% if session[:user_id] %>
                                         <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-                                            <input class="ui basic button" type=submit value='logout'>
+                                            <input class="ui basic button" type=submit value='Logout'>
                                             <% end %>
                                                 <% end %>
                                 </div>
-                            </div>
+                            
     </nav>
     <%= yield %>
 </body>
 <footer>
-    <img  src="/assets/bg.png" width="1000">
-     <img  src="/assets/bg.png" width="1000">
+   
 </html>

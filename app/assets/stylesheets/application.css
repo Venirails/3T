@@ -24,3 +24,20 @@
     background-size: cover;
     opacity: 0.9;
 }
+
+.ui.raised.very.padded.text.container.segment
+{
+
+	background-color: #fdecbb
+}
+
+.ui.teal.segment
+{
+
+	background-color: #fdecbb
+}
+/*.column
+{
+
+	background-color: #fdecbb
+}*/

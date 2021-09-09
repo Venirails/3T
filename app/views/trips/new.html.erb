@@ -38,10 +38,19 @@
         <div class="ui basic segment">
             <div class="ui labeled fluid input">
                 <div class="ui label">
-                    Location
+                    Location(city)
                 </div>
                 <%= f.fields_for :location do |location_builder| %>
                     <input type="text" name="trip[location_attributes][city]" id="trip_location_attributes_city" placeholder="City">
+                
+            </div>
+        </div>
+
+        <div class="ui basic segment">
+            <div class="ui labeled fluid input">
+                <div class="ui label">
+                    State
+                </div>
                     <%= location_builder.collection_select :state, State.all, :name, :name %>
                         <% end %>
             </div>
