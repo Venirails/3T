@@ -29,7 +29,7 @@
     <% if current_user.id == @user.id %>
         <div class="ui basic segment">
             <a class="ui tiny basic positive button" href="/users/<%=@user.id%>/edit">Edit Profile</a>
-            <a class="ui tiny negative basic right floated button" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/users/<%=@user.id%>">Delete Profile</a>
+            <a class="ui tiny negative basic right floated button" rel="nofollow" data-method="delete" href="/users/<%=@user.id%>">Delete Profile</a>
         </div>
         <% end %>
             <% if current_user.friends_with?(@user) %>
