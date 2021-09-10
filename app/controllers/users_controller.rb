@@ -46,7 +46,11 @@ class UsersController < ApplicationController
     end
 
     def destroy
-        User.find_by(id: session[:user_id]).destroy
+        @user = User.find_by(id: session[:user_id])
+        @user.trips.collect{|x| x.destroy}
+        @user.posts.collect{|x| x.destroy}
+        @user.items.collect{|x| x.destroy}
+        @user.destroy
         redirect_to('/')
     end
 

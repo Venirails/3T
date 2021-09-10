@@ -8,6 +8,7 @@ class User < ApplicationRecord
     has_friendship
 
     has_and_belongs_to_many :trips
+    before_destroy { trips.clear }
     has_many :posts
     has_many :items
 
